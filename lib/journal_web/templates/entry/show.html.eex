@@ -1,0 +1,32 @@
+<h1>Show Entry</h1>
+
+<ul>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @entry.body %>
+  </li>
+
+  <li>
+    <strong>Time:</strong>
+    <%= @entry.time %>
+  </li>
+
+  <li>
+    <strong>Feeling:</strong>
+    <%= @entry.feeling %>
+  </li>
+
+  <li>
+    <strong>Image:</strong>
+    <%= @entry.image %>
+  </li>
+  <li>
+    <strong>Title:</strong>
+    <%= @entry.title %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.entry_path(@conn, :edit, @entry) %></span>
+<span><%= link "Back", to: Routes.entry_path(@conn, :index) %></span>

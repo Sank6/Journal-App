@@ -1,0 +1,30 @@
+<h1>Listing Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Time</th>
+      <th>Image</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for entry <- @entries do %>
+        <tr>
+          <td><%= entry.title %></td>
+          <td><%= entry.time %></td>
+          <td><%= entry.image %></td>
+
+          <td>
+            <span><%= link "Show", to: Routes.entry_path(@conn, :show, entry) %></span>
+            <span><%= link "Edit", to: Routes.entry_path(@conn, :edit, entry) %></span>
+            <span><%= link "Delete", to: Routes.entry_path(@conn, :delete, entry), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Entry", to: Routes.entry_path(@conn, :new) %></span>
