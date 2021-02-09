@@ -17,7 +17,7 @@
     <% end %>
   <% end %>
 
-  <%= if @conn.assigns[:image] do %>
+  <%= if @conn.assigns[:images] do %>
     <%= label f, :image, "Image" %>
     <%= for image <- @images do %>
       <%= label do %>
