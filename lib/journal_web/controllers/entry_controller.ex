@@ -11,7 +11,10 @@ defmodule JournalWeb.EntryController do
 
   def new(conn, _params) do
     changeset = Timeline.change_entry(%Entry{})
-    render(conn, "new.html", changeset: changeset)
+    access_key = Application.get_env(:journal, JournalWeb.Endpoint)[:unsplash_access_key]
+    %HTTPoison.Response{status_code: 200, body: body} = HTTPoison.get!("https://api.unsplash.com/photos?client_id=#{access_key}")
+    images = Jason.decode(body)
+    render(conn, "new.html", changeset: changeset, images: images)
   end
 
   def create(conn, %{"entry" => entry_params}) do
