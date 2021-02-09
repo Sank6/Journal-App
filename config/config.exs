@@ -16,7 +16,8 @@ config :journal, JournalWeb.Endpoint,
   secret_key_base: "LXbCPyG2XrMzo4a9YSysKplRVac8NphqWbDy9LGE/DcjTzDXV9KLqzW8i8j+f7Fz",
   render_errors: [view: JournalWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Journal.PubSub,
-  live_view: [signing_salt: "UfxireuQ"]
+  live_view: [signing_salt: "UfxireuQ"],
+  unsplash_access_key: ""
 
 # Configures Elixir's Logger
 config :logger, :console,
