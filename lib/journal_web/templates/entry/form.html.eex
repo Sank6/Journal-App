@@ -17,9 +17,19 @@
     <% end %>
   <% end %>
 
-  <%= label f, :image %>
-  <%= text_input f, :image %>
-  <%= error_tag f, :image %>
+  <%= if @conn.assigns[:image] do %>
+    <%= label f, :image, "Image" %>
+    <%= for image <- @images do %>
+      <%= label do %>
+        <%= radio_button f, :image, image["urls"]["full"]  %>
+        <img src="<%= image["urls"]["small"] %>" />
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= label f, :image %>
+    <%= text_input f, :image %>
+    <%= error_tag f, :image %>
+  <% end %>
 
   <%= label f, :title %>
   <%= text_input f, :title %>
