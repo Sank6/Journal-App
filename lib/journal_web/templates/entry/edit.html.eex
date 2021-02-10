@@ -1,5 +1,11 @@
-<h1>Edit Entry</h1>
+<div id="form-container">
+  <h1>Edit Entry</h1>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.entry_path(@conn, :update, @entry)) %>
+  <%= render "form.html", Map.put(assigns, :action, Routes.entry_path(@conn, :update, @entry)) %>
+</div>
 
-<span><%= link "Back", to: Routes.entry_path(@conn, :index) %></span>
+<div id="back" class="top-links">
+  <%= link to: Routes.entry_path(@conn, :show, @entry) do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
+</div>

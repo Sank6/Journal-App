@@ -17,8 +17,14 @@ defmodule Journal.Timeline do
       [%Entry{}, ...]
 
   """
-  def list_entries do
-    Repo.all(from Entry, order_by: [desc: :inserted_at], select: [:id, :title, :body, :image, :time])
+  def list_entries(params) do
+    search_term = get_in(params, ["query"])
+
+    if search_term do
+      Repo.all(from e in Entry, where: ilike(e.body, ^"%#{search_term}%"), order_by: [desc: e.inserted_at])
+    else
+      Repo.all(from e in Entry, order_by: [desc: e.inserted_at])
+    end
   end
 
   @doc """

@@ -21,7 +21,13 @@
   </div>
 </div>
 
-<div id="links">
+<div id="back" class="top-links">
+  <%= link to: Routes.entry_path(@conn, :index) do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
+</div>
+
+<div id="links" class="top-links">
   <%= link to: Routes.entry_path(@conn, :edit, @entry) do %>
     <i class="fas fa-pen"></i>
   <% end %>

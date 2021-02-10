@@ -1,7 +1,11 @@
 <div class="top-bar">
-  <i class="fas fa-search search"></i>
-  <%= text_input :search_box, :search, placeholder: "Search..." %>
-  <button><i class="fas fa-bolt"></i></button>
+  <%= form_for @conn, Routes.entry_path(@conn, :index), [method: :get], fn f -> %>
+    <i class="fas fa-search search"></i>
+    <%= search_input f, :query, placeholder: "Search..." %>
+    <%= submit do %>
+      <i class="fas fa-bolt"></i>
+    <% end %>
+  <% end %>
 </div>
 <h1 class="header">Welcome back</h1>
 <a class="new" href="<%= Routes.entry_path(@conn, :new) %>">
@@ -15,6 +19,7 @@ Add an entry
         <div class="text-container">
           <div class="text">
             <h1 class="title"><%= entry.title %></h1>
+            <p class="body"><%= entry.body %></p>
             <h2 class="date" date_value="<%= DateTime.to_string(entry.time) %>"></h2>
           </div>
         </div>

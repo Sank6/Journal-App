@@ -16,10 +16,5 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= @inner_content %>
     </main>
-    <div class="bottom-bar">
-      <a href="/"><i class="fas fa-home"></i></a>
-      <a href="<%= Routes.entry_path(@conn, :new) %>"><i class="fas fa-plus"></i></a>
-      <a href=<%= Routes.entry_path(@conn, :new) %>><i class="fas fa-cog"></i></a>
-    </div>
   </body>
 </html>

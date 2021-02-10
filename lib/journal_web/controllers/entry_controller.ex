@@ -4,8 +4,8 @@ defmodule JournalWeb.EntryController do
   alias Journal.Timeline
   alias Journal.Timeline.Entry
 
-  def index(conn, _params) do
-    entries = Timeline.list_entries()
+  def index(conn, params) do
+    entries = Timeline.list_entries(params)
     render(conn, "index.html", entries: entries)
   end
 
