@@ -18,7 +18,7 @@ defmodule Journal.Timeline do
 
   """
   def list_entries do
-    Repo.all(Entry)
+    Repo.all(from Entry, order_by: [desc: :inserted_at], select: [:id, :title, :body, :image, :time])
   end
 
   @doc """

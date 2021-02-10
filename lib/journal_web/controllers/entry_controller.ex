@@ -18,14 +18,16 @@ defmodule JournalWeb.EntryController do
   end
 
   def create(conn, %{"entry" => entry_params}) do
+    access_key = Application.get_env(:journal, JournalWeb.Endpoint)[:unsplash_access_key]
+    %HTTPoison.Response{status_code: 200, body: body} = HTTPoison.get!("https://api.unsplash.com/photos?client_id=#{access_key}")
+    {:ok, images} = Jason.decode(body)
     case Timeline.create_entry(entry_params) do
       {:ok, entry} ->
         conn
         |> put_flash(:info, "Entry created successfully.")
         |> redirect(to: Routes.entry_path(conn, :show, entry))
-
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, images: images)
     end
   end
 

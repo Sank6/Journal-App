@@ -1,32 +1,31 @@
-<h1>Show Entry</h1>
+<div id="bg"><%= @entry.image %></div>
 
-<ul>
+<div id="content-container">
+  <div id="content">
+    <div id="bar"></div>
+    <h1 class="header">
+      <%= @entry.title %>
+    </h1>
+    <h2 class="show-date" date_value="<%= DateTime.to_string(@entry.time) %>"></h2>
+    <div class="body">
+      <h2 class="subtitle">Entry</h2>
+      <div class="body-text">
+        <%= text_to_html(@entry.body) %>
+      </div>
+      <br>
+      <h2 class="subtitle">Feeling</h2>
+      <p>
+        <%= @entry.feeling %>
+      </p>
+    </div>
+  </div>
+</div>
 
-  <li>
-    <strong>Body:</strong>
-    <%= @entry.body %>
-  </li>
-
-  <li>
-    <strong>Time:</strong>
-    <%= @entry.time %>
-  </li>
-
-  <li>
-    <strong>Feeling:</strong>
-    <%= @entry.feeling %>
-  </li>
-
-  <li>
-    <strong>Image:</strong>
-    <%= @entry.image %>
-  </li>
-  <li>
-    <strong>Title:</strong>
-    <%= @entry.title %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.entry_path(@conn, :edit, @entry) %></span>
-<span><%= link "Back", to: Routes.entry_path(@conn, :index) %></span>
+<div id="links">
+  <%= link to: Routes.entry_path(@conn, :edit, @entry) do %>
+    <i class="fas fa-pen"></i>
+  <% end %>
+  <%= link to: Routes.entry_path(@conn, :delete, @entry), method: :delete, data: [confirm: "Are you sure?"] do %>
+    <i class="fas fa-trash"></i>
+  <% end %>
+</div>

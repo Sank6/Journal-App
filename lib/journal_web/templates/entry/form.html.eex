@@ -1,40 +1,62 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [autocomplete: "off"], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
 
-  <%= label f, :body %>
+  <%= label do %>
+    <h2 class="subtitle">Title</h2>
+  <% end %>
+  <%= text_input f, :title %>
+  <%= error_tag f, :title %>
+
+  <%= label do %>
+    <h2 class="subtitle">Body</h2>
+  <% end %>
   <%= textarea f, :body %>
   <%= error_tag f, :body %>
 
-  <%= label f, :options, "Feeling" %>
+  <%= label do %>
+    <h2 class="subtitle">Feeling</h2>
+  <% end %>
   <%= for option <- ["Awesome", "Good", "Blessed", "Okay", "Sad", "Angry", "Terrible"] do %>
     <%= label do %>
       <%= radio_button f, :feeling, option  %>
-      <%= option %>
+      <div class="form-tile feeling-tile">
+        <%= case option do
+                "Awesome" -> "😃"
+                "Good" -> "🙂"
+                "Blessed" -> "🙏"
+                "Okay" -> "😐"
+                "Sad" -> "🙁"
+                "Angry" -> "😠"
+                "Terrible" -> "🤬"
+            end %>
+      </div>
     <% end %>
   <% end %>
 
   <%= if @conn.assigns[:images] do %>
-    <%= label f, :image, "Image" %>
-    <%= for image <- @images do %>
-      <%= label do %>
-        <%= radio_button f, :image, image["urls"]["full"]  %>
-        <img src="<%= image["urls"]["small"] %>" />
+    <h2 class="subtitle">Image</h2>
+
+    <div class="outer">
+      <%= for image <- @images do %>
+        <%= label do %>
+          <%= radio_button f, :image, image["urls"]["regular"]  %>
+          <div class="form-tile">
+            <img class="form-tile-img" src="<%= image["urls"]["small"] %>" />
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   <% else %>
     <%= label f, :image %>
     <%= text_input f, :image %>
     <%= error_tag f, :image %>
   <% end %>
 
-  <%= label f, :title %>
-  <%= text_input f, :title %>
-  <%= error_tag f, :title %>
-
+  <br>
   <div>
     <%= submit "Save" %>
   </div>

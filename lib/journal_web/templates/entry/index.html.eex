@@ -1,30 +1,24 @@
-<h1>Listing Entries</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Time</th>
-      <th>Image</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= for entry <- @entries do %>
-        <tr>
-          <td><%= entry.title %></td>
-          <td><%= entry.time %></td>
-          <td><%= entry.image %></td>
-
-          <td>
-            <span><%= link "Show", to: Routes.entry_path(@conn, :show, entry) %></span>
-            <span><%= link "Edit", to: Routes.entry_path(@conn, :edit, entry) %></span>
-            <span><%= link "Delete", to: Routes.entry_path(@conn, :delete, entry), method: :delete, data: [confirm: "Are you sure?"] %></span>
-          </td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<span><%= link "New Entry", to: Routes.entry_path(@conn, :new) %></span>
+<div class="top-bar">
+  <i class="fas fa-search search"></i>
+  <%= text_input :search_box, :search, placeholder: "Search..." %>
+  <button><i class="fas fa-bolt"></i></button>
+</div>
+<h1 class="header">Welcome back</h1>
+<a class="new" href="<%= Routes.entry_path(@conn, :new) %>">
+<i class="fas fa-plus"></i>
+Add an entry
+</a>
+<div class="outer">
+  <%= for entry <- @entries do %>
+      <a class="tile" href="<%= Routes.entry_path(@conn, :show, entry) %>">
+        <img class="image" src="<%= entry.image %>">
+        <div class="text-container">
+          <div class="text">
+            <h1 class="title"><%= entry.title %></h1>
+            <h2 class="date" date_value="<%= DateTime.to_string(entry.time) %>"></h2>
+          </div>
+        </div>
+      </a>
+  <% end %>
+  <div class="last-tile"></div>
+</div>

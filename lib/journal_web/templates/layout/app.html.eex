@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Journal · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/main.js") %>"></script>
   </head>
-  <body>
+  <body onload="ready()">
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= @inner_content %>
     </main>
+    <div class="bottom-bar">
+      <a href="/"><i class="fas fa-home"></i></a>
+      <a href="<%= Routes.entry_path(@conn, :new) %>"><i class="fas fa-plus"></i></a>
+      <a href=<%= Routes.entry_path(@conn, :new) %>><i class="fas fa-cog"></i></a>
+    </div>
   </body>
 </html>
