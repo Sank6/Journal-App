@@ -181,6 +181,7 @@ h2 {
 .top-bar {
   color: $color;
   width: 110vw;
+  margin: 30px 0;
 
   .search {
     color: $color;
@@ -195,7 +196,7 @@ h2 {
     border: 2px solid $tint;
     padding: 10px 0 10px 35px;
     outline: none;
-    width: calc(80vw - 4px);
+    width: calc(100vw - 40px);
     font-size: 0.8rem;
     background-color: $background;
   }
