@@ -23,8 +23,7 @@ defmodule JournalWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :journal,
-    gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    gzip: false
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
