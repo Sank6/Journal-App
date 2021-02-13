@@ -35,5 +35,12 @@ mix phx.digest
 MIX_ENV=prod mix ecto.migrate
 
 # Run in detached mode
-PORT=4001 MIX_ENV=prod elixir --erl "-detached" -S mix phx.server```
+PORT=4001 MIX_ENV=prod elixir --erl "-detached" -S mix phx.server
+```
+
+# To Do
+
+ - Encrypt entries with a password.
+ - [Export to pdf](https://github.com/gutschilla/elixir-pdf-generator).
+ - Create an offline page for PWA.
 
