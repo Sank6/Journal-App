@@ -1,11 +1,11 @@
 function ready() {
-    document.querySelectorAll(".date, .show-date").forEach((elem) => {
-        let d = new Date(elem.getAttribute("date_value"));
-        elem.innerText = d.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
-    })
+  document.querySelectorAll(".date, .show-date").forEach((elem) => {
+    let d = new Date(elem.getAttribute("date_value"));
+    elem.innerText = d.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+  })
 
-    let bg = document.getElementById("bg");
-    document.body.style.backgroundImage = `url("${bg.innerText}")`;
+  let bg = document.getElementById("bg");
+  document.body.style.backgroundImage = `url("${bg.innerText}")`;
 }
 
 // Initialize deferredPrompt for use later to show browser install prompt.
@@ -21,3 +21,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
   // Optionally, send analytics event that PWA install promo was shown.
   console.log(`'beforeinstallprompt' event was fired.`);
 });
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js')
+  })
+}
