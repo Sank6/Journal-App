@@ -1,12 +1,13 @@
 Journal App
 ===========
 
-A self-hosted journal web app using the Phoenix framework and a PostgreSQL database. 
+A self-hosted journal web app using the Phoenix framework and a PostgreSQL database. The images are from Unsplash's API.
 
 ![](https://i.postimg.cc/RCLxHw51/image.png)
 ![](https://i.postimg.cc/6pLZsHD2/image.png)
 ![](https://i.postimg.cc/kMBpvHHy/image.png)
 
+The images from the screenshots above are by [setsj](https://unsplash.com/@setsj)
 
 # Setup
 You need [nodejs](https://nodejs.org/download/), [elixir](https://elixir-lang.org/install.html), the [Phoenix framework](https://hexdocs.pm/phoenix/installation.html) and a Postgres server.
