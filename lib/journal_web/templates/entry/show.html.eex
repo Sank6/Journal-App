@@ -3,20 +3,14 @@
 <div id="content-container">
   <div id="content">
     <div id="bar"></div>
-    <h1 class="header">
-      <%= @entry.title %>
-    </h1>
-    <h2 class="show-date" date_value="<%= DateTime.to_string(@entry.time) %>"></h2>
+    <%= content_tag :h1, @entry.title, class: "header" %>
+    <%= content_tag :h2, "", [class: "show-date", date_value: DateTime.to_string(@entry.time)] %>
     <div class="body">
       <h2 class="subtitle">Entry</h2>
-      <div class="body-text">
-        <%= text_to_html(@entry.body) %>
-      </div>
+      <%= content_tag :div, text_to_html(@entry.body), class: "body-text" %>
       <br>
       <h2 class="subtitle">Feeling</h2>
-      <p>
-        <%= @entry.feeling %>
-      </p>
+      <%= content_tag :p, @entry.feeling %>
     </div>
   </div>
 </div>

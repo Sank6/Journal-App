@@ -45,7 +45,7 @@
         <%= label do %>
           <%= radio_button f, :image, image["urls"]["regular"]  %>
           <div class="form-tile">
-            <img class="form-tile-img" src="<%= image["urls"]["small"] %>" />
+            <%= img_tag image["urls"]["small"], class: "form-tile-img" %>
           </div>
         <% end %>
       <% end %>

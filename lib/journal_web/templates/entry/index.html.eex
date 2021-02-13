@@ -8,19 +8,18 @@
   <% end %>
 </div>
 <h1 class="header">Welcome back</h1>
-<a class="new" href="<%= Routes.entry_path(@conn, :new) %>">
-<i class="fas fa-plus"></i>
-Add an entry
-</a>
+<%= link to: Routes.entry_path(@conn, :new), class: "new" do %>
+  <i class="fas fa-plus"></i> Add an entry
+<% end %>
 <div class="outer">
   <%= for entry <- @entries do %>
       <a class="tile" href="<%= Routes.entry_path(@conn, :show, entry) %>">
-        <img class="image" src="<%= entry.image %>">
+        <%= img_tag entry.image, class: "image" %>
         <div class="text-container">
           <div class="text">
-            <h1 class="title"><%= entry.title %></h1>
-            <p class="body"><%= entry.body %></p>
-            <h2 class="date" date_value="<%= DateTime.to_string(entry.time) %>"></h2>
+            <%= content_tag :h1, entry.title, class: "title" %>
+            <%= content_tag :p, entry.body, class: "body" %>
+            <%= content_tag :h2, "", [class: "date", date_value: DateTime.to_string(entry.time)] %>
           </div>
         </div>
       </a>
