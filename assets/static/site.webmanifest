@@ -50,7 +50,7 @@
     ],
     "theme_color": "#191a1b",
     "background_color": "#191a1b",
-    "display": "fullscreen",
+    "display": "standalone",
     "start_url": "/entries",
     "shortcuts": [
         {
