@@ -44,4 +44,5 @@ PORT=4001 MIX_ENV=prod elixir --erl "-detached" -S mix phx.server
  - Encrypt entries with a password.
  - [Export to pdf](https://github.com/gutschilla/elixir-pdf-generator).
  - Create an offline page for PWA.
+ - Light mode / Dark mode switcher
 
