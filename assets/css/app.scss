@@ -187,6 +187,7 @@ h2 {
     color: $color;
     position: relative;
     left: 35px;
+    bottom: -1px;
     z-index: 5;
   }
 
@@ -204,7 +205,8 @@ h2 {
   button {
     color: $color;
     position: relative;
-    left: -45px;
+    left: -40px;
+    bottom: 1px;
     background-color: $background;
     border: none;
     box-shadow: 0 0 2px 1px $tint;
